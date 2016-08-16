@@ -511,7 +511,8 @@ function isNumberValid(inputNumber) {
         });
 
         var inputFlagClasses = `flag ${this.state.selectedCountry.iso2}`;
-        var placeholder = this.props.placeholder || "";
+        var placeholder = this.props.placeholder || "+1 (702) 123-4567";
+        var required_props = this.props.required || false;
 
         return (
             <div className={classNames('react-tel-input', this.props.classNames)}>
@@ -527,7 +528,8 @@ function isNumberValid(inputNumber) {
                     className={inputClasses}
                     autoComplete='tel'
                     placeholder={placeholder}
-                    disabled={this.props.disabled}/>
+                    disabled={this.props.disabled}
+                    required={required_props}/>
                 <div ref='flagDropDownButton' className={flagViewClasses} onKeyDown={this.handleKeydown} >
                     <div ref='selectedFlag' onClick={this.handleFlagDropdownClick} className='selected-flag' title={`${this.state.selectedCountry.name}: + ${this.state.selectedCountry.dialCode}`}>
                         <div className={inputFlagClasses} style={this.getFlagStyle()}>
